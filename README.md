@@ -13,7 +13,7 @@ Get source code
 
 ```bash
 cd /home/orbbec/Documents/orbbec
-git clone git@github.com:obdatean/opdk.git
+git clone git@github.com:orbbec/opdk.git
 git submodule update --init --recursive
 ```
 
@@ -61,6 +61,8 @@ cd /home/orbbec/Documents/orbbec/opdk
 source install/setup.bash
 ros2 launch isaac_orbbec_launch orbbec_perceptor.launch.py
 ```
+
+![This is a local image](./image/opdk_rviz.png "Optional title")
 
 - On terminal 2, visualize the TF frame hierarchy using rqt_tf_tree with forced discovery.
 
