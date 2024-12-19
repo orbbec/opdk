@@ -45,13 +45,14 @@ sudo bash install_udev_rules.sh
 sudo udevadm control --reload-rules && sudo udevadm trigger
 ```
 
-## Getting start
+## Build Workspace
 
 ```bash
 cd /home/orbbec/Documents/orbbec/opdk
 colcon build --packages-skip nvblox_test_data nvblox_test --event-handlers  console_direct+  --cmake-args  -DCMAKE_BUILD_TYPE=Release
 ```
 
+## Getting start
 Launch node
 
 - On terminal 1, run all opdk nodes
