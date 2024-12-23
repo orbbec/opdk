@@ -5,6 +5,7 @@
 - [OPDK](#opdk)
   - [Table of Contents](#table-of-contents)
   - [Installation Instructions](#installation-instructions)
+  - [Build Workspace](#build-workspace)
   - [Getting start](#getting-start)
 
 ## Installation Instructions
@@ -60,7 +61,7 @@ Launch node
 ```bash
 cd /home/orbbec/Documents/orbbec/opdk
 source install/setup.bash
-ros2 launch isaac_orbbec_launch orbbec_perceptor.launch.py
+ros2 launch isaac_orbbec_launch orbbec_perceptor.launch.py dev_matrices:=config/dev_matrices_SN1423724335594.yaml
 ```
 
 ![This is a local image](./image/opdk_rviz.png "Optional title")
