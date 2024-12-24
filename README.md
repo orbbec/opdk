@@ -54,9 +54,8 @@ colcon build --packages-skip nvblox_test_data nvblox_test --event-handlers  cons
 ```
 
 ## Getting start
-Launch node
 
-- On terminal 1, run all opdk nodes
+- Run all opdk nodes
 
 ```bash
 cd /home/orbbec/Documents/orbbec/opdk
@@ -64,15 +63,44 @@ source install/setup.bash
 ros2 launch isaac_orbbec_launch orbbec_perceptor.launch.py dev_matrices:=config/dev_matrices_SN1423724335594.yaml
 ```
 
+**Another step-by-step execution method**
+
+- Run static TF broadcast
+```bash
+cd /home/orbbec/Documents/orbbec/opdk/install/isaac_orbbec_launch/share/isaac_orbbec_launch/launch
+python base_static_transforms_publisher.py --dev_matrices=/home/orbbec/Documents/orbbec/opdk/install/isaac_orbbec_launch/share/isaac_orbbec_launch/config/dev_matrices_SN1423724335594.yaml
+```
+
+- Run 4 cameras launch
+```bash
+cd /home/orbbec/Documents/orbbec/opdk
+source install/setup.bash
+ros2 launch orbbec_camera multi_camera_synced.launch.py
+```
+
+- Run Nvblox and cuVSLAM
+```bash
+cd /home/orbbec/Documents/orbbec/opdk
+source install/setup.bash
+ros2 launch isaac_ros_perceptor_bringup rgbd_perceptor.launch.py config_file:=/home/orbbec/Documents/orbbec/opdk/install/isaac_orbbec_launch/share/isaac_orbbec_launch/param/orbbec_perceptor_detached.yaml
+```
+
+- Run cuVSLAM without Nvblox
+```bash
+cd /home/orbbec/Documents/orbbec/opdk
+source install/setup.bash
+ros2 launch isaac_ros_perceptor_bringup rgbd_perceptor.launch.py config_file:=/home/orbbec/Documents/orbbec/opdk/install/isaac_orbbec_launch/share/isaac_orbbec_launch/param/orbbec_perceptor_detached.yaml disable_nvblox:=true
+```
+
 ![This is a local image](./image/opdk_rviz.png "Optional title")
 
-- On terminal 2, visualize the TF frame hierarchy using rqt_tf_tree with forced discovery.
+- Visualize the TF frame hierarchy using rqt_tf_tree with forced discovery.
 
 ```bash
 ros2 run rqt_tf_tree rqt_tf_tree --force-discover
 ```
 
-- On terminal 3, view the output Pose from cuVSLAM, which is of type nav_msgs/msg/Odometry.
+- View the output Pose from cuVSLAM, which is of type nav_msgs/msg/Odometry.
 
 ```bash
 cd /home/orbbec/Documents/orbbec/opdk
