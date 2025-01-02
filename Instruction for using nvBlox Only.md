@@ -57,6 +57,8 @@ colcon build --packages-skip nvblox_test_data nvblox_test --event-handlers  cons
 
 ## Getting start
 
+Before getting start, please confirm all camera are connected on the correct usb port. The port numbers are: 2-1, 2-2, 2-3.1 and 2-3.3. The front camera should be connected to the 2-1 usb port as the primary camera. If you have different connection stradegy, please make coresponding modification in multi_camera_synced.launch.py.
+
 - Run all opdk nodes
 
 ```bash
