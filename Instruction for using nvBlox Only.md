@@ -59,6 +59,8 @@ colcon build --packages-skip nvblox_test_data nvblox_test --event-handlers  cons
 
 Before getting start, please confirm all camera are connected on the correct usb port. The port numbers are: 2-1, 2-2, 2-3.1 and 2-3.3. The front camera should be connected to the 2-1 usb port as the primary camera. If you have different connection stradegy, please make coresponding modification in multi_camera_synced.launch.py.
 
+When cuvSlam is not running, Orbbec camera does not need to output IR stream. Cameras can have more resolution options, i.e. 1280*800@30fps, 64*360@30fps
+
 ## Run nvBlox without cuvSlam
 
 - Run static TF broadcast
@@ -81,16 +83,13 @@ source install/setup.bash
 ros2 launch isaac_ros_perceptor_bringup rgbd_perceptor.launch.py config_file:=/home/orbbec/Documents/orbbec/opdk/install/isaac_orbbec_launch/share/isaac_orbbec_launch/param/orbbec_perceptor_detached.yaml
 ```
 
-- Run cuVSLAM without Nvblox
+- Run Nvblox without cuVSLAM
 ```bash
 cd /home/orbbec/Documents/orbbec/opdk
 source install/setup.bash
-ros2 launch isaac_ros_perceptor_bringup rgbd_perceptor.launch.py config_file:=/home/orbbec/Documents/orbbec/opdk/install/isaac_orbbec_launch/share/isaac_orbbec_launch/param/orbbec_perceptor_detached.yaml disable_nvblox:=true
+ros2 launch isaac_ros_perceptor_bringup rgbd_perceptor.launch.py config_file:=/home/orbbec/Documents/orbbec/opdk/install/isaac_orbbec_launch/share/isaac_orbbec_launch/param/orbbec_perceptor_detached.yaml disable_cuvslam:=true
 ```
 
-![This is a local image](./image/opdk_rviz.png "Optional title")
-
-- Visualize the TF frame hierarchy using rqt_tf_tree with forced discovery.
 
 ```bash
 ros2 run rqt_tf_tree rqt_tf_tree --force-discover
