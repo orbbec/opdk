@@ -145,7 +145,7 @@ Answer：For example, if you want to check the frame rate of the depth stream of
 
 [Isaac ROS Nvblox Topics and Services](https://nvidia-isaac-ros.github.io/v/release-3.2/repositories_and_packages/isaac_ros_nvblox/isaac_ros_nvblox/api/topics_and_services.html)
 
-Answer：
+Answer: 
 
 `/nvblox_node/color_layer`：Pointcloud visualizing color voxels.
 
@@ -165,16 +165,60 @@ Effect of subscribing to two topics at the same time：
 
 [Isaac ROS Visual SLAM](https://nvidia-isaac-ros.github.io/v/release-3.2/repositories_and_packages/isaac_ros_visual_slam/isaac_ros_visual_slam/index.html#quickstart)
 
-Answer：The normal operation of VSLAM mainly depends on whether the odom data is updated normally:
+Answer: The normal operation of VSLAM mainly depends on whether the odom data is updated normally:
 
 `ros2 topic echo /visual_slam/tracking/odometry`
 
 8. OrbbecSDK log storage and analysis
 
-Answer：Modify `OrbbecSDKConfig_v2.0.xml` in the OrbbecSDK_ROS2 package and change FileLogLevel to 0
+Answer: Modify `OrbbecSDKConfig_v2.0.xml` in the OrbbecSDK_ROS2 package and change FileLogLevel to 0
 
 ![This is a local image](./image/OrbbecSDKConfig_v2.0.png "Optional title")
 
 Then recompile and start the camera, and you can see the camera log file `OrbbecSDK.log.txt` in the Log folder in the opdk folder
 
 ![This is a local image](./image/OrbbecSDKLog.png "Optional title")
+
+    9. If you find that the ros2 topic hz frame rate is not as expected, check whether the following optimization points are still effective
+
+Answer: Optimizing FastDDS：[https://github.com/orbbec/OrbbecSDK_ROS2/blob/v2-main/docs/fastdds_tuning.md](https://github.com/orbbec/OrbbecSDK_ROS2/blob/v2-main/docs/fastdds_tuning.md)
+
+Increase the usb cache to 128MB, `sudo vi /etc/systemd/system/usbfs_memory_fix.service`add the following to usbfs_memory_fix.service
+
+```plaintext
+[Unit]
+Description=Set USBFS memory limit
+After=sysinit.target
+
+[Service]
+Type=oneshot
+ExecStart=/bin/bash -c "echo 128 | tee /sys/module/usbcore/parameters/usbfs_memory_mb"
+RemainAfterExit=yes
+
+[Install]
+WantedBy=multi-user.target
+```
+
+a. Reload systemd
+
+`sudo systemctl daemon-reload`
+
+b. Start the service to verify operation
+
+`sudo systemctl start usbfs_memory_fix.service`
+
+Check whether it works
+
+`cat /sys/module/usbcore/parameters/usbfs_memory_mb`
+
+c. Enable the service to start automatically at boot
+
+`sudo systemctl enable usbfs_memory_fix.service`
+
+Verify service status
+
+`sudo systemctl status usbfs_memory_fix.service`
+
+d. After the system restarts, check again
+
+`cat /sys/module/usbcore/parameters/usbfs_memory_mb`
