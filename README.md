@@ -191,7 +191,7 @@ Modify `OrbbecSDKConfig_v2.0.xml` in the OrbbecSDK_ROS2 package and change FileL
 
 Then recompile and start the camera, and you can see the camera log file `OrbbecSDK.log.txt` in the Log folder in the opdk folder
 
-![This is a local image](./image/OrbbecSDKLog.png "Optional title")
+![This is a local image](https://vscode-remote+ssh-002dremote-002b10-002e9-002e171-002e78.vscode-resource.vscode-cdn.net/home/orbbec/Documents/orbbec/opdk/image/OrbbecSDKConfig_v2.0.png "Optional title")
 
 9. If you find that the ros2 topic hz frame rate is not as expected, check whether the following optimization points are still effective
 
