@@ -193,7 +193,7 @@ Then recompile and start the camera, and you can see the camera log file `Orbbec
 
 ![This is a local image](./image/OrbbecSDKLog.png "Optional title")
 
-    9. If you find that the ros2 topic hz frame rate is not as expected, check whether the following optimization points are still effective
+9. If you find that the ros2 topic hz frame rate is not as expected, check whether the following optimization points are still effective
 
 Optimizing FastDDS：[https://github.com/orbbec/OrbbecSDK_ROS2/blob/v2-main/docs/fastdds_tuning.md](https://github.com/orbbec/OrbbecSDK_ROS2/blob/v2-main/docs/fastdds_tuning.md)
 
