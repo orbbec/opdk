@@ -200,16 +200,16 @@ WantedBy=multi-user.target
 ```
 
 a. Reload systemd
-
+```
   sudo systemctl daemon-reload`
-
+```
 b. Start the service to verify operation
-
+```
   sudo systemctl start usbfs_memory_fix.service`
-
+```
 Check whether it works
 
-  cat /sys/module/usbcore/parameters/usbfs_memory_mb`
+```  cat /sys/module/usbcore/parameters/usbfs_memory_mb`
 
 c. Enable the service to start automatically at boot
 
