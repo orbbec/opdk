@@ -117,43 +117,55 @@ ros2 topic echo /visual_slam/tracking/odometry --no-arr
 
 1. How to check the SN number of Orin device?
 
-Answer: `cat /sys/firmware/devicetree/base/serial-number`
+```bash
+cat /sys/firmware/devicetree/base/serial-number
+```
 
 2. How to check the USB port number and SN number of the camera?
 
-Answer: `ros2 run orbbec_camera list_devices_node`
+```bash
+ros2 run orbbec_camera list_devices_node
+```
 
 3. How to switch the camera external parameter file when starting launch?
 
-Answer: `ros2 launch isaac_orbbec_launch orbbec_perceptor.launch.py dev_matrices:=config/dev_matrices_SN1423724335594.yaml`
+```bash
+ros2 launch isaac_orbbec_launch orbbec_perceptor.launch.py dev_matrices:=config/dev_matrices_SN1423724335594.yaml
+```
 
 Replace `dev_matrices_SN1423724335594.yaml` with the external reference yaml file of the current device.
 
-For example, `ros2 launch isaac_orbbec_launch orbbec_perceptor.launch.py dev_matrices:=config/dev_matrices_SN1423624327954.yaml`
+For example:
+
+```bash
+ros2 launch isaac_orbbec_launch orbbec_perceptor.launch.py dev_matrices:=config/dev_matrices_SN1423624327954.yaml
+```
 
 4. How does the camera use specific camera parameter configuration yaml files?
 
-Answer: For example, if you want to run the configuration of cuvslam+nvblox 640*360 60fps, open `multi_camera_synced.launch.py` and replace `camera_params.yaml` with `camera_params_cuvslam_nvblox-640_360_60fps.yaml`
+For example, if you want to run the configuration of cuvslam+nvblox 640*360 60fps, open `multi_camera_synced.launch.py` and replace `camera_params.yaml` with `camera_params_cuvslam_nvblox-640_360_60fps.yaml`
 
 ![This is a local image](./image/multi_camera_synced.png "Optional title")
 
 5. How to determine the topic frame rate?
 
-Answer：For example, if you want to check the frame rate of the depth stream of left_camera: `ros2 topic hz /left_camera/depth/image_raw`
+For example, if you want to check the frame rate of the depth stream of left_camera:
+
+```bash
+ros2 topic hz /left_camera/depth/image_raw
+```
 
 6. Nvblox topic content judgment
 
 [Isaac ROS Nvblox Topics and Services](https://nvidia-isaac-ros.github.io/v/release-3.2/repositories_and_packages/isaac_ros_nvblox/isaac_ros_nvblox/api/topics_and_services.html)
 
-Answer: 
-
-`/nvblox_node/color_layer`：Pointcloud visualizing color voxels.
+a. `/nvblox_node/color_layer`：Pointcloud visualizing color voxels.
 
 ![This is a local image](./image/color_layer.png "Optional title")
 
-`/nvblox_node/dynamic_occupancy_layer`：A pointcloud of the people/dynamic occupancy map (only voxels with occupation probability > 0.5).
+b.`/nvblox_node/dynamic_occupancy_layer`：A pointcloud of the people/dynamic occupancy map (only voxels with occupation probability > 0.5).
 
-`/nvblox_node/combined_esdf_pointcloud`：A pointcloud of the combined static and people/dynamic 2D ESDF (minimal distance of both), with intensity as the metric distance to the nearest obstacle or person.
+c. `/nvblox_node/combined_esdf_pointcloud`：A pointcloud of the combined static and people/dynamic 2D ESDF (minimal distance of both), with intensity as the metric distance to the nearest obstacle or person.
 
 ![This is a local image](./image/combined_esdf_pointcloud.png "Optional title")
 
@@ -165,13 +177,15 @@ Effect of subscribing to two topics at the same time：
 
 [Isaac ROS Visual SLAM](https://nvidia-isaac-ros.github.io/v/release-3.2/repositories_and_packages/isaac_ros_visual_slam/isaac_ros_visual_slam/index.html#quickstart)
 
-Answer: The normal operation of VSLAM mainly depends on whether the odom data is updated normally:
+The normal operation of VSLAM mainly depends on whether the odom data is updated normally:
 
-`ros2 topic echo /visual_slam/tracking/odometry`
+```bash
+ros2 topic echo /visual_slam/tracking/odometry
+```
 
 8. OrbbecSDK log storage and analysis
 
-Answer: Modify `OrbbecSDKConfig_v2.0.xml` in the OrbbecSDK_ROS2 package and change FileLogLevel to 0
+Modify `OrbbecSDKConfig_v2.0.xml` in the OrbbecSDK_ROS2 package and change FileLogLevel to 0
 
 ![This is a local image](./image/OrbbecSDKConfig_v2.0.png "Optional title")
 
@@ -179,11 +193,17 @@ Then recompile and start the camera, and you can see the camera log file `Orbbec
 
 ![This is a local image](./image/OrbbecSDKLog.png "Optional title")
 
-9. If you find that the ros2 topic hz frame rate is not as expected, check whether the following optimization points are still effective
+    9. If you find that the ros2 topic hz frame rate is not as expected, check whether the following optimization points are still effective
 
-Answer: Optimizing FastDDS：[https://github.com/orbbec/OrbbecSDK_ROS2/blob/v2-main/docs/fastdds_tuning.md](https://github.com/orbbec/OrbbecSDK_ROS2/blob/v2-main/docs/fastdds_tuning.md)
+Optimizing FastDDS：[https://github.com/orbbec/OrbbecSDK_ROS2/blob/v2-main/docs/fastdds_tuning.md](https://github.com/orbbec/OrbbecSDK_ROS2/blob/v2-main/docs/fastdds_tuning.md)
 
-Increase the usb cache to 128MB, `sudo vi /etc/systemd/system/usbfs_memory_fix.service`add the following to usbfs_memory_fix.service
+Increase the usb cache to 128MB:
+
+```bash
+sudo vi /etc/systemd/system/usbfs_memory_fix.service
+```
+
+add the following to usbfs_memory_fix.service
 
 ```plaintext
 [Unit]
@@ -200,26 +220,37 @@ WantedBy=multi-user.target
 ```
 
 a. Reload systemd
-```
+
+```bash
 sudo systemctl daemon-reload
 ```
+
 b. Start the service to verify operation
-```
+
+```bash
 sudo systemctl start usbfs_memory_fix.service
 ```
+
 Check whether it works
-```
+
+```bash
 cat /sys/module/usbcore/parameters/usbfs_memory_mb
 ```
+
 c. Enable the service to start automatically at boot
-```
+
+```bash
 sudo systemctl enable usbfs_memory_fix.service
 ```
+
 Verify service status
-```
+
+```bash
 sudo systemctl status usbfs_memory_fix.service
 ```
+
 d. After the system restarts, check again
-```
+
+```bash
 cat /sys/module/usbcore/parameters/usbfs_memory_mb
 ```
