@@ -205,19 +205,19 @@ sudo systemctl daemon-reload
 ```
 b. Start the service to verify operation
 ```
-  sudo systemctl start usbfs_memory_fix.service
+sudo systemctl start usbfs_memory_fix.service
 ```
 Check whether it works
 ```
-  cat /sys/module/usbcore/parameters/usbfs_memory_mb
+cat /sys/module/usbcore/parameters/usbfs_memory_mb
 ```
 c. Enable the service to start automatically at boot
 ```
-  sudo systemctl enable usbfs_memory_fix.service
+sudo systemctl enable usbfs_memory_fix.service
 ```
 Verify service status
 ```
-  sudo systemctl status usbfs_memory_fix.service
+sudo systemctl status usbfs_memory_fix.service
 ```
 d. After the system restarts, check again
 ```
