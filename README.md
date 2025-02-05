@@ -127,7 +127,7 @@ cat /sys/firmware/devicetree/base/serial-number
 ros2 run orbbec_camera list_devices_node
 ```
 
-3. How to switch the camera external parameter file when starting launch?
+3. How to switch the camera extrinsics file when starting launch?
 
 ```bash
 ros2 launch isaac_orbbec_launch orbbec_perceptor.launch.py dev_matrices:=config/dev_matrices_SN1423724335594.yaml
@@ -251,4 +251,28 @@ After the system restarts, check again
 
 ```bash
 cat /sys/module/usbcore/parameters/usbfs_memory_mb
+```
+
+10. Put nvblox, cuvslam, and orbbec_camera into the same container
+
+Open the orbbec_perceptor_detached.yaml file and modify the container_name and attach_to_container
+
+```bash
+nvblox_config:
+  container_name: 'nvblox_container'
+  attach_to_container: false
+cuvslam_config:
+  container_name: 'cuvslam_container'
+  attach_to_container: false
+```
+
+to:
+
+```bash
+nvblox_config:
+  container_name: 'shared_orbbec_container'
+  attach_to_container: true
+cuvslam_config:
+  container_name: 'shared_orbbec_container'
+  attach_to_container: true
 ```
