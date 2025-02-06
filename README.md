@@ -16,6 +16,7 @@ Get source code
 ```bash
 cd /home/orbbec/Documents/orbbec
 git clone git@github.com:orbbec/opdk.git
+cd opdk
 git submodule update --init --recursive
 ```
 
