@@ -8,7 +8,7 @@
 ### 1.1 Reflash AGX
 
 * Please follow Nvidia support documents to recover Ubuntu system (22.04+) and Jetpack 6.1
-* [https://developer.nvidia.com/embedded/learn/jetson-agx-orin-devkit-user-guide/howto.html](1) Please follow Nvidia support documents to recover Ubuntu system (22.04+) and Jetpack 6.1 2) https://developer.nvidia.com/embedded/learn/jetson-agx-orin-devkit-user-guide/howto.html)
+* [https://developer.nvidia.com/embedded/learn/jetson-agx-orin-devkit-user-guide/howto.html](https://developer.nvidia.com/embedded/learn/jetson-agx-orin-devkit-user-guide/howto.html)
 
 ### 1.2 Library Dependencies
 
@@ -20,7 +20,7 @@ Install the following libraries to enable interaction with the Orbbec Gemini 335
   * Orbbec SDK Installation Guide: [Orbbec SDK Installation Guide](https://orbbec.github.io/OrbbecSDK/doc/tutorial/Chinese/Installation_guidance.html)
 * Install the ROS 2 wrapper (ver. 2.1.1+) provided by Orbbec to enable seamless integration with ROS 2 applications.
 
-  * Orbbec ROS 2 Wrapper GitHub Repository: [Orbbec ROS 2 Wrapper GitHub](https://github.com/orbbec/OrbbecSDK_ROS2)
+  * Orbbec ROS 2 Wrapper GitHub Repository: [Orbbec ROS 2 Wrapper GitHub](https://github.com/orbbec/OrbbecSDK_ROS2/tree/v2-main)
   * Orbbec ROS 2 Wrapper User Manual: [Orbbec ROS 2 Wrapper User Manual](https://www.orbbec.com.cn/index/Gemini330/info.html?cate=119&id=157)
 * Install NVIDIA Isaac Perceptor (3.2) to leverage advanced perception capabilities
 
