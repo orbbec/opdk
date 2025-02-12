@@ -279,10 +279,10 @@ cuvslam_config:
 
 11. How can I reflash the OPDK if the system firmware crashes and the AGX Orin becomes unbootable during development?
 
-Please refer to the [OPDK System Restoration Instruction](docs/OPDK System Restoration Instruction/README.md) detailed steps.
+Please refer to the [OPDK System Restoration Instruction](docs/OPDK%20System%20Restoration%20Instruction/README.md) detailed steps.
 
 12. Where can I find technical support after reflashing OPDK?
 
-If the issue is related to hardware or firmware, and OPDK is unable to stream data or provide ROS 2 topics properly (see [Section 4](docs/OPDK System Restoration Instruction/README.md#readiness-check)): Readiness Check in the OPDK System Restoration Instruction), users should contact Orbbec Tech Support for assistance.
+If the issue is related to hardware or firmware, and OPDK is unable to stream data or provide ROS 2 topics properly (see [Section 4](docs/OPDK%20System%20Restoration%20Instruction/README.md#readiness-check)): Readiness Check in the OPDK System Restoration Instruction), users should contact Orbbec Tech Support for assistance.
 
-If the issue pertains to NVIDIA Isaac Perceptor software while OPDK is able to stream data and provide ROS 2 topics correctly (see [Section 4](docs/OPDK System Restoration Instruction/README.md#readiness-check)): Readiness Check in the OPDK System Restoration Instruction), users should contact NVIDIA Tech Support for assistance.
+If the issue pertains to NVIDIA Isaac Perceptor software while OPDK is able to stream data and provide ROS 2 topics correctly (see [Section 4](docs/OPDK%20System%20Restoration%20Instruction/README.md#readiness-check)): Readiness Check in the OPDK System Restoration Instruction), users should contact NVIDIA Tech Support for assistance.
