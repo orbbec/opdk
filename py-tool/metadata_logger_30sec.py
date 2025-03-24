@@ -25,7 +25,9 @@ topics_to_record = [
     "/right_camera/left_ir/camera_info",
     "/right_camera/left_ir/image_raw",
     "/right_camera/right_ir/camera_info",
-    "/right_camera/right_ir/image_raw"
+    "/right_camera/right_ir/image_raw",
+    "/tf",
+    "/tf_static",
 ]
 
 class RosbagRecorder(Node):
