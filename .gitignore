@@ -348,6 +348,7 @@ CATKIN_IGNORE
 install/
 log/
 Log/
+rosbag_temp/
 .obj-x86_64-linux-gnu/
 
 # Ignore generated docs
