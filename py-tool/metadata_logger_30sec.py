@@ -6,25 +6,33 @@ import os
 import shutil
 from datetime import datetime
 
-rosbag_duration = 30  # 30-second rolling buffer
-odometry_timeout = 2.0  # Stop recording if odometry stops for 1 sec
+rosbag_duration = 60  # 30-second rolling buffer
+odometry_timeout = 5.0  # Stop recording if odometry stops for 1 sec
 
 topics_to_record = [
     "/front_camera/left_ir/camera_info",
+    "/front_camera/left_ir/metadata",
     "/front_camera/left_ir/image_raw",
     "/front_camera/right_ir/camera_info",
+    "/front_camera/right_ir/metadata",
     "/front_camera/right_ir/image_raw",
     "/left_camera/left_ir/camera_info",
+    "/left_camera/left_ir/metadata",
     "/left_camera/left_ir/image_raw",
     "/left_camera/right_ir/camera_info",
+    "/left_camera/right_ir/metadata",
     "/left_camera/right_ir/image_raw",
     "/rear_camera/left_ir/camera_info",
+    "/rear_camera/left_ir/metadata",
     "/rear_camera/left_ir/image_raw",
     "/rear_camera/right_ir/camera_info",
+    "/rear_camera/right_ir/metadata",
     "/rear_camera/right_ir/image_raw",
     "/right_camera/left_ir/camera_info",
+    "/right_camera/left_ir/metadata",
     "/right_camera/left_ir/image_raw",
     "/right_camera/right_ir/camera_info",
+    "/right_camera/right_ir/metadata",
     "/right_camera/right_ir/image_raw",
     "/tf",
     "/tf_static",

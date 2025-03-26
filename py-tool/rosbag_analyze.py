@@ -19,7 +19,7 @@ class CameraSubscriber(Node):
         camera_list = ['front_camera', 'left_camera', 'rear_camera', 'right_camera']
         ir_sides = ['left_ir', 'right_ir']
         self.shutdown=False
-        self.default_diff=0.035  #设置上一帧与当前帧的时间戳间隔误差，超过35ms则打印输出
+        self.default_diff=0.034  #设置上一帧与当前帧的时间戳间隔误差，超过35ms则打印输出
 
         self.bridge = CvBridge()
 
