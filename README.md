@@ -7,6 +7,7 @@
   - [Installation Instructions](#installation-instructions)
   - [Build Workspace](#build-workspace)
   - [Getting start](#getting-start)
+    - [Run single camera with cuVSLAM and Nvblox](#run-single-camera-with-cuvslam-and-nvblox)
   - [FAQ](#faq)
 
 ## Installation Instructions
@@ -111,6 +112,39 @@ ros2 run rqt_tf_tree rqt_tf_tree --force-discover
 cd /home/orbbec/Documents/orbbec/opdk
 source install/setup.bash
 ros2 topic echo /visual_slam/tracking/odometry --no-arr
+```
+
+### Run single camera with cuVSLAM and Nvblox
+
+* Run single usb camera launch
+
+```bash
+cd /home/orbbec/Documents/orbbec/opdk
+source install/setup.bash
+ros2 launch orbbec_camera gemini_330_series.launch.py config_file_path:=/home/orbbec/Documents/orbbec/opdk/src/OrbbecSDK_ROS2/orbbec_camera/config/single_camera_params.yaml
+```
+
+* Or run single net camera launch
+
+```bash
+cd /home/orbbec/Documents/orbbec/opdk
+source install/setup.bash
+# Write the IP address of the net camera into net_device_ip
+ros2 launch orbbec_camera gemini_330_series.launch.py config_file_path:=/home/orbbec/Documents/orbbec/opdk/src/OrbbecSDK_ROS2/orbbec_camera/config/single_camera_params.yaml enumerate_net_device:=true net_device_ip:=192.168.1.10 net_device_port:=8090
+```
+
+* Run Nvblox and cuVSLAM
+
+```bash
+cd /home/orbbec/Documents/orbbec/opdk
+source install/setup.bash
+ros2 launch isaac_ros_perceptor_bringup rgbd_perceptor.launch.py config_file:=/home/orbbec/Documents/orbbec/opdk/install/isaac_orbbec_launch/share/isaac_orbbec_launch/param/orbbec_single_camera_perceptor_detached.yaml
+```
+
+* Run rviz2
+
+```bash
+rviz2 -d /home/orbbec/Documents/orbbec/opdk/install/isaac_orbbec_launch/share/isaac_orbbec_launch/param/single_camera_odom.rviz
 ```
 
 ## FAQ
