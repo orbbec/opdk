@@ -17,6 +17,7 @@ Get source code
 ```bash
 cd /home/orbbec/Documents/orbbec
 git clone git@github.com:orbbec/opdk.git
+cd opdk
 git submodule update --init --recursive
 ```
 
@@ -47,7 +48,10 @@ cd /home/orbbec/Documents/orbbec/opdk/src/OrbbecSDK_ROS2/orbbec_camera/scripts
 sudo bash install_udev_rules.sh
 sudo udevadm control --reload-rules && sudo udevadm trigger
 ```
-
+## Install CUDA
+```bash
+sudo apt install cuda -y
+```
 ## Build Workspace
 
 ```bash
