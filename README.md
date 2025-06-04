@@ -5,6 +5,7 @@
 - [OPDK](#opdk)
   - [Table of Contents](#table-of-contents)
   - [Installation Instructions](#installation-instructions)
+  - [Install CUDA](#install-cuda)
   - [Build Workspace](#build-workspace)
   - [Getting start](#getting-start)
     - [Run single camera with cuVSLAM and Nvblox](#run-single-camera-with-cuvslam-and-nvblox)
@@ -48,11 +49,16 @@ cd /home/orbbec/Documents/orbbec/opdk/src/OrbbecSDK_ROS2/orbbec_camera/scripts
 sudo bash install_udev_rules.sh
 sudo udevadm control --reload-rules && sudo udevadm trigger
 ```
+
 ## Install CUDA
+
 ```bash
 sudo apt install cuda -y
 ```
+
 ## Build Workspace
+
+Set [slam_sync_mode](https://github.com/NVIDIA-ISAAC-ROS/isaac_ros_visual_slam/blob/19be8c781a55dee9cfbe9f097adca3986638feb1/isaac_ros_visual_slam/src/impl/visual_slam_impl.cpp#L395) to 1 to ensure that VSLAM can operate normally for a long time.
 
 ```bash
 cd /home/orbbec/Documents/orbbec/opdk
@@ -181,9 +187,7 @@ ros2 launch isaac_orbbec_launch orbbec_perceptor.launch.py dev_matrices:=config/
 
 4. How does the camera use specific camera parameter configuration yaml files?
 
-For example, if you want to run the configuration of cuvslam+nvblox 640*360 60fps, open `multi_camera_synced.launch.py` and replace `camera_params.yaml` with `camera_params_cuvslam_nvblox-640_360_60fps.yaml`
-
-![This is a local image](./image/multi_camera_synced.png "Optional title")
+For example, if you want to run the configuration of nvblox 1280*800 30fps, open [multi_camera_synced.launch.py](https://github.com/orbbec/OrbbecSDK_ROS2/blob/9b93440b623370b860717c7ccb524963e4e7eba7/orbbec_camera/launch/multi_camera_synced.launch.py), replace `camera_params.yaml` with `camera_params_cuvslam_nvblox-640_360_60fps.yaml` and `camera_secondary_params.yaml` with `camera_secondary_params_nvblox-1280_800_30fps.yaml`.
 
 5. How to determine the topic frame rate?
 
