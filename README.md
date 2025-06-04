@@ -187,7 +187,7 @@ ros2 launch isaac_orbbec_launch orbbec_perceptor.launch.py dev_matrices:=config/
 
 4. How does the camera use specific camera parameter configuration yaml files?
 
-For example, if you want to run the configuration of nvblox 1280*800 30fps, open [multi_camera_synced.launch.py](https://github.com/orbbec/OrbbecSDK_ROS2/blob/9b93440b623370b860717c7ccb524963e4e7eba7/orbbec_camera/launch/multi_camera_synced.launch.py), replace `camera_params.yaml` with `camera_params_cuvslam_nvblox-640_360_60fps.yaml` and `camera_secondary_params.yaml` with `camera_secondary_params_nvblox-1280_800_30fps.yaml`.
+For example, if you want to run the configuration of nvblox 1280*800 30fps, open [multi_camera_synced.launch.py](https://github.com/orbbec/OrbbecSDK_ROS2/blob/9b93440b623370b860717c7ccb524963e4e7eba7/orbbec_camera/launch/multi_camera_synced.launch.py), replace `camera_params.yaml` with `camera_params_nvblox-1280_800_30fps.yaml` and `camera_secondary_params.yaml` with `camera_secondary_params_nvblox-1280_800_30fps.yaml`.
 
 5. How to determine the topic frame rate?
 
