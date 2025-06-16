@@ -64,6 +64,7 @@ Set [slam_sync_mode](https://github.com/NVIDIA-ISAAC-ROS/isaac_ros_visual_slam/b
 
 ```bash
 cd /home/orbbec/Documents/orbbec/opdk
+source /opt/ros/humble/setup.bash
 colcon build --packages-skip nvblox_test_data nvblox_test --event-handlers  console_direct+  --cmake-args  -DCMAKE_BUILD_TYPE=Release
 ```
 
