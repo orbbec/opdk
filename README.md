@@ -17,7 +17,7 @@ Get source code
 
 ```bash
 cd /home/orbbec/Documents/orbbec
-git clone git@github.com:orbbec/opdk.git
+git clone https://github.com/orbbec/opdk.git
 cd opdk
 git submodule update --init --recursive
 ```
@@ -54,6 +54,8 @@ sudo udevadm control --reload-rules && sudo udevadm trigger
 
 ```bash
 sudo apt install cuda -y
+export PATH=/usr/local/cuda-12.6/bin:$PATH
+export LD_LIBRARY_PATH=/usr/local/cuda-12.6/lib64:$LD_LIBRARY_PATH
 ```
 
 ## Build Workspace
