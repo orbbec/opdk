@@ -228,7 +228,11 @@ The normal operation of VSLAM mainly depends on whether the odom data is updated
 ros2 topic echo /visual_slam/tracking/odometry
 ```
 
-8. OrbbecSDK log storage and analysis
+8. If you get an error such as Unable to locate package ros-humble-isaac-ros-nitros when running the Installation Instructions
+
+You can find help at the [Isaac Apt Repository](https://nvidia-isaac-ros.github.io/getting_started/isaac_apt_repository.html).
+
+9. OrbbecSDK log storage and analysis
 
 Modify `OrbbecSDKConfig_v2.0.xml` in the OrbbecSDK_ROS2 package and change FileLogLevel to 0
 
@@ -326,7 +330,7 @@ cuvslam_config:
 
 Please refer to the [OPDK System Restoration Instruction](docs/OPDK%20System%20Restoration%20Instruction/README.md) detailed steps.
 
-12. Where can I find technical support after reflashing OPDK?
+13. Where can I find technical support after reflashing OPDK?
 
 If the issue is related to hardware or firmware, and OPDK is unable to stream data or provide ROS 2 topics properly (see [Section 4](docs/OPDK%20System%20Restoration%20Instruction/README.md#readiness-check)): Readiness Check in the OPDK System Restoration Instruction), users should contact Orbbec Tech Support for assistance.
 
