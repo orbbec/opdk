@@ -335,3 +335,27 @@ Please refer to the [OPDK System Restoration Instruction](docs/OPDK%20System%20R
 If the issue is related to hardware or firmware, and OPDK is unable to stream data or provide ROS 2 topics properly (see [Section 4](docs/OPDK%20System%20Restoration%20Instruction/README.md#readiness-check)): Readiness Check in the OPDK System Restoration Instruction), users should contact Orbbec Tech Support for assistance.
 
 If the issue pertains to NVIDIA Isaac Perceptor software while OPDK is able to stream data and provide ROS 2 topics correctly (see [Section 4](docs/OPDK%20System%20Restoration%20Instruction/README.md#readiness-check)): Readiness Check in the OPDK System Restoration Instruction), users should contact NVIDIA Tech Support for assistance.
+
+14. If you need to contact Orbbec technical support for help, use the table below to find the SN number of the corresponding AGX Orin Developer Kit and provide feedback to technical support.
+
+|   OPDK  S/N   | AGX Orin Module S/N | AGX Orin Developer Kit S/N | Gemini 335L Cameras S/N                                                                                                          |
+| :-----------: | :-----------------: | :------------------------: | -------------------------------------------------------------------------------------------------------------------------------- |
+| 1424324318470 |    1424324318470    |       1424224607162        | · Front Camera: CP3294Y0004K<br />· Left Camera: CP3294Y0000R<br />· Right Camera: CP3294Y0003P<br />· Rear Camera: CP3294Y00028 |
+| 1424324318683 |    1424324318683    |       1424224607216        | · Front Camera: CP3294Y00035<br />· Left Camera: CP3294Y00015<br />· Right Camera: CP3294Y0002K<br />· Rear Camera: CP3294Y0000B |
+| 1423624327954 |    1423624327954    |       1423524601188        | · Front Camera: CP3294Y00027<br />· Left Camera: CP3294Y00005<br />· Right Camera: CP3294Y0005C<br />· Rear Camera: CP3294Y0003G |
+| 1424324318421 |    1424324318421    |       1424224607211        | · Front Camera: CP3294Y0005B<br />· Left Camera: CP3294Y00013<br />· Right Camera: CP3294Y00056<br />· Rear Camera: CP3294Y0000E |
+| 1424324318887 |    1424324318887    |       1424224606693        | · Front Camera: CP3294Y0002N<br />· Left Camera: CP3294Y0005N<br />· Right Camera: CP3294Y00032<br />· Rear Camera: CP3294Y0001P |
+
+* OPDK S/N and AGX Orin Module S/N can be obtained by the following command
+
+```bash
+cat /sys/firmware/devicetree/base/serial-number
+```
+
+* Gemini 335L Cameras S/N can be obtained through list_devices_node
+
+```bash
+ros2 run orbbec_camera list_devices_node
+```
+
+We can query the OPDK S/N and AGX Orin Module S/N or Gemini 335L Cameras S/N, and then query the corresponding AGX Orin Developer Kit S/N through the table above, and feedback the AGX Orin Developer Kit S/N to technical support.
